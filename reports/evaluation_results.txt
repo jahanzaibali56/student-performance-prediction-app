@@ -1,0 +1,62 @@
+STUDENT ACADEMIC PERFORMANCE PREDICTION - MODEL REPORT
+======================================================================
+Original dataset shape: (660, 7)
+Cleaned dataset shape: (650, 7)
+
+DATA CLEANING
+Column names were standardized and numeric fields were converted safely.
+
+MISSING VALUE HANDLING
+Missing values before handling:
+study_hours_per_day        4
+attendance_percentage      4
+assignments_completed      0
+previous_semester_marks    0
+class_participation        4
+final_performance_score    0
+final_performance_grade    0
+dtype: int64
+
+Missing values after handling:
+study_hours_per_day        0
+attendance_percentage      0
+assignments_completed      0
+previous_semester_marks    0
+class_participation        0
+final_performance_score    0
+final_performance_grade    0
+dtype: int64
+
+DUPLICATE REMOVAL
+Duplicate rows before removal: 10
+Duplicate rows after removal: 0
+
+FEATURE SELECTION
+Selected features: ['study_hours_per_day', 'attendance_percentage', 'assignments_completed', 'previous_semester_marks', 'class_participation']
+Target variable: final_performance_score
+
+DATA VISUALIZATION FILES
+reports/attendance_distribution.png
+reports/marks_distribution.png
+reports/correlation_heatmap.png
+reports/performance_categories.png
+reports/model_comparison_rmse.png
+reports/model_comparison_mse.png
+
+TRAIN-TEST SPLIT
+Training records: 520
+Testing records: 130
+
+MODEL EVALUATION
+Accuracy Score is grade-level accuracy after converting numeric scores into A/B/C/D/F.
+MAE, MSE, and RMSE measure score prediction error.
+R2 Score measures how well the model explains target score variation.
+
+                  Model  Accuracy Score      MAE       MSE     RMSE  R2 Score
+      Linear Regression        0.615385 4.900799 38.195325 6.180237  0.783534
+Random Forest Regressor        0.561538 5.824483 57.600023 7.589468  0.673561
+Decision Tree Regressor        0.500000 7.338531 90.653140 9.521194  0.486237
+
+Best selected model: Linear Regression
+Saved best model: models/student_performance_model.pkl
+Saved scaler: models/scaler.pkl

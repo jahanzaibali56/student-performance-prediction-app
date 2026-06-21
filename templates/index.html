@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Academic Performance Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <main class="page-wrapper">
+        <section class="hero-card">
+            <div class="header-content">
+                <p class="badge">AI/ML Semester Project</p>
+                <h1>Student Academic Performance Prediction</h1>
+                <p class="subtitle">
+                    Predict a student's final performance grade and explore dataset insights using a Flask dashboard with machine learning and charts.
+                </p>
+            </div>
+
+            <section class="dashboard-section">
+                <div class="section-heading">
+                    <h2>Dataset Dashboard</h2>
+                    <p>Summary statistics and visual insights generated from the student performance dataset.</p>
+                </div>
+
+                <div class="insight-grid">
+                    <div class="insight-card">
+                        <span>Total Records</span>
+                        <strong id="totalRecords">--</strong>
+                    </div>
+                    <div class="insight-card">
+                        <span>Average Marks</span>
+                        <strong id="averageMarks">--</strong>
+                    </div>
+                    <div class="insight-card">
+                        <span>Average Attendance</span>
+                        <strong id="averageAttendance">--</strong>
+                    </div>
+                </div>
+
+                <div class="chart-grid">
+                    <div class="chart-card">
+                        <h3>Attendance Distribution</h3>
+                        <div class="chart-box"><canvas id="attendanceChart"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Marks Distribution</h3>
+                        <div class="chart-box"><canvas id="marksChart"></canvas></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Performance Categories</h3>
+                        <div class="chart-box"><canvas id="performanceChart"></canvas></div>
+                    </div>
+                    <div class="chart-card heatmap-card">
+                        <h3>Feature Correlation Heatmap</h3>
+                        <div class="chart-box heatmap-box"><img src="{{ url_for('report_file', filename='correlation_heatmap.png') }}" alt="Feature Correlation Heatmap" /></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="prediction-section">
+                <div class="section-heading">
+                    <h2>Predict Student Performance</h2>
+                    <p>Enter academic details below to predict the final score and grade.</p>
+                </div>
+
+                <form id="predictionForm" class="prediction-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="study_hours_per_day">Study Hours Per Day</label>
+                            <input type="number" id="study_hours_per_day" name="study_hours_per_day" min="0" max="10" step="0.1" placeholder="Example: 4.5" required />
+                            <small>Range: 0 to 10 hours</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="attendance_percentage">Attendance Percentage</label>
+                            <input type="number" id="attendance_percentage" name="attendance_percentage" min="0" max="100" step="0.1" placeholder="Example: 85" required />
+                            <small>Range: 0 to 100%</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="assignments_completed">Assignments Completed</label>
+                            <input type="number" id="assignments_completed" name="assignments_completed" min="0" max="10" step="1" placeholder="Example: 8" required />
+                            <small>Range: 0 to 10</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="previous_semester_marks">Previous Semester Marks</label>
+                            <input type="number" id="previous_semester_marks" name="previous_semester_marks" min="0" max="100" step="0.1" placeholder="Example: 78" required />
+                            <small>Range: 0 to 100</small>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="class_participation">Class Participation</label>
+                            <input type="number" id="class_participation" name="class_participation" min="0" max="10" step="0.1" placeholder="Example: 7.5" required />
+                            <small>Scale: 0 to 10</small>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn">Predict Final Grade</button>
+                </form>
+
+                <div id="resultBox" class="result-box hidden">
+                    <p id="resultText"></p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
