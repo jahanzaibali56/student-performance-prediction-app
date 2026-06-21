@@ -399,3 +399,20 @@ This project demonstrates:
 - Flask backend development
 - Frontend form handling
 - Project documentation
+
+---
+
+## Author
+
+**Jahanzaib Ali**
+
+Computer Engineering Student
+COMSATS University Islamabad, Lahore Campus
+
+GitHub:
+https://github.com/jahanzaibali56
+
+LinkedIn:
+https://www.linkedin.com/in/jahanzaibali-eng
+
+---
